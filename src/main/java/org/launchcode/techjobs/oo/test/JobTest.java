@@ -16,10 +16,8 @@ public class JobTest {
     @Test
     public void testSettingJobID(){
         Job job1 = new Job();
-        assertEquals( 1, job1.getId());
         Job job2 = new Job();
-        assertEquals(2, job2.getId());
-        assertNotEquals(1, job2.getId());
+        assertNotEquals(job1.getId(), job2.getId());
     }
 
     @Test
@@ -32,7 +30,6 @@ public class JobTest {
         assertEquals("Desert", job.getLocation().getValue());
         assertEquals("Quality control", job.getPositionType().getValue());
         assertEquals("Persistence", job.getCoreCompetency().getValue());
-        assertTrue(job instanceof Job);
         assertTrue(job.getName() == "Product tester");
     }
 
