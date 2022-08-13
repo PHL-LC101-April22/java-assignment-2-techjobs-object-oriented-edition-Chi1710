@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class JobTest {
 
     @Test
-    public void testSettingJobID(){
+    public void testSettingJobId(){
         Job job1 = new Job();
         Job job2 = new Job();
         assertNotEquals(job1.getId(), job2.getId());
@@ -31,6 +31,10 @@ public class JobTest {
         assertEquals("Quality control", job.getPositionType().getValue());
         assertEquals("Persistence", job.getCoreCompetency().getValue());
         assertTrue(job.getName() == "Product tester");
+        assertTrue(job.getEmployer().getValue() == "AMCE");
+        assertTrue(job.getLocation().getValue() == "Desert");
+        assertTrue(job.getPositionType().getValue() == "Quality control");
+        assertTrue(job.getCoreCompetency().getValue() == "Persistence");
     }
 
     @Test
@@ -41,9 +45,25 @@ public class JobTest {
         Job job2 = new Job("Product tester", new Employer("AMCE"),
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-        assertNotEquals(job1, job2);
+        assertFalse(job1 == job2);
 
     }
+
+    @Test
+    public void testToStringStartsAndEndWithNewLine(){
+        Job job1 = new Job("Product tester", new Employer("AMCE"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        char firstChar = job1.toString().charAt(0);
+        char lastChar = job1.toString().charAt(job1.toString().length()-1);
+        assertEquals(firstChar, '\n');
+        assertEquals(lastChar, '\n');
+    }
+
+
+
+
+
 
 
 }
