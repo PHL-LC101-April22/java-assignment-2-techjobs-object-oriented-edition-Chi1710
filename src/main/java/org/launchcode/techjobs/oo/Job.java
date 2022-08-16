@@ -2,6 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+
 public class Job {
 
     private int id;
@@ -30,10 +31,35 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public String toString(){
+    public String toString() {
 
-        return null;
-    }
+        String str = "Data not available";
+
+        if(this.getName().isEmpty() || this.getName() == null){
+            name = str;
+        }
+
+        if (this.getEmployer().getValue().isEmpty() || this.getEmployer().getValue() == null ){
+            employer.setValue(str);
+        }
+
+        if( this.getLocation().getValue().isEmpty() ||  this.getLocation().getValue() == null) {
+            location.setValue(str);
+        }
+        if(this.getPositionType().getValue().isEmpty() || this.getPositionType().getValue() == null){
+            positionType.setValue(str);
+        }
+        if(this.getCoreCompetency().getValue().isEmpty() || this.getCoreCompetency().getValue() == null){
+            coreCompetency.setValue(str);
+        }
+
+            return  "\nID: " + this.getId() + "\n" +
+                    "Name: " + this.getName() + "\n" +
+                    "Employer: " + this.getEmployer() +"\n" +
+                    "Location: " + this.getLocation() + "\n" +
+                    "Position Type: " + this.getPositionType() + "\n" +
+                    "Core Competency: " + this.getCoreCompetency() + "\n";
+        }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.

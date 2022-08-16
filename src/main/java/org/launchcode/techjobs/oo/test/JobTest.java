@@ -50,7 +50,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringStartsAndEndWithNewLine(){
+    public void testToStringStartsAndEndsWithNewLine(){
         Job job1 = new Job("Product tester", new Employer("AMCE"),
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
@@ -58,6 +58,25 @@ public class JobTest {
         char lastChar = job1.toString().charAt(job1.toString().length()-1);
         assertEquals(firstChar, '\n');
         assertEquals(lastChar, '\n');
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job job1 = new Job("Product tester", new Employer("AMCE"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        String jobString = (job1.toString());
+        assertEquals(jobString, job1.toString());
+    }
+
+
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job1 = new Job("Product tester", new Employer("AMCE"),
+                new Location(""), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        String jobString = (job1.toString());
+        assertEquals(jobString, job1.toString());
     }
 
 
